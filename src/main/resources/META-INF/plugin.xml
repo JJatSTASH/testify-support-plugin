@@ -1,0 +1,44 @@
+<idea-plugin>
+    <id>com.stash.realb.go</id>
+    <name>Testify</name>
+    <vendor email="jj.brown@stash.com">JJ Brown</vendor>
+
+    <description>Unofficial plugin providing support for the stretchr/testify library for assertions and mocking in Go</description>
+
+    <!-- Requires the Go plugin -->
+    <depends>org.jetbrains.plugins.go</depends>
+    <!-- Requires the platform module to distinguish it from a legacy plugin -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection implementationClass="com.brownian.testify.MockingUnknownMethodInspection"
+                         displayName="Mocking unknown methods with testify.Mock"
+                         enabledByDefault="true"
+                         groupName="Testify"
+                         language="go"/>
+
+        <localInspection implementationClass="com.brownian.testify.AssertEqualsSwappedExpectedActualInspection"
+                         displayName="Calling assert.Equal() with actual and expected values swapped"
+                         enabledByDefault="true"
+                         groupName="Testify"
+                         language="go"/>
+
+        <localInspection implementationClass="com.brownian.testify.MockReturnsWrongTypeInspection"
+                         displayName="Mismatched return value types with testify.Mock"
+                         enabledByDefault="true"
+                         groupName="Testify"
+                         language="go"/>
+
+        <localInspection implementationClass="com.brownian.testify.MockParametersAreWrongTypeInspection"
+                         displayName="Mismatched argument types types with testify.Mock"
+                         enabledByDefault="true"
+                         groupName="Testify"
+                         language="go"/>
+
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
